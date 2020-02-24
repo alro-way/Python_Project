@@ -1,8 +1,11 @@
 
 Python “Project's Week Helper” - 
 January 2020
+
 Technologies: Python, Django, HTML5, CSS, SQLite Python, Git, JavaScript, jQuery, API
+
 Target audience: Students from Bootcamp, IT students and beginners who want to work and complete the project together.
+
 Summary: The Student can create his account and then create Proposal for Project. He can add Features with different levels of Priorities inside the Proposal as well as add pictures-Wireframes. The Instructor can approve or not the Proposal and send it back to Student with notice and advice. The Student can add team-member to his Project and give him Feature to complete. When the Feature is completed , everyone from the team can see that this Feature is Done. 
 
 List of features:
