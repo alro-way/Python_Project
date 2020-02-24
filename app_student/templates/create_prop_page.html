@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_create_prop5.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+
+            <div class = div_forms>
+                <h2>Create a New Proposal!</h2>
+                {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form action="create_proposal" method="POST">
+                    {% csrf_token %}
+                    <p><label for = 'html_stack'>Choose stack:</label>
+                        <select id="select2" name = 'html_stack'> 
+                            <option value="Python">Python</option> 
+                            <option value="C#">C#</option> 
+                            <option value="Mean">Mean</option> 
+                        </select> 
+                    </p>
+                    <p><label for = 'html_pr_name'>Name of App:</label>
+                    <input class = "html_pr_name'" type = "text"  name = 'html_pr_name'></p>
+                    <p><label for = 'html_aud'>Target audience:</label>
+                    <input class = "html_aud" type = "text"  name = 'html_aud'></p>
+                    <p><label for = 'html_brief'>Brief:</label>
+                    <textarea rows = "10" cols = "60" name = 'html_brief'></textarea></p>
+                    <p><label for = 'html_stack_comp'>Stack components:</label>
+                    <input class = "html_stack_comp" type = "text"  name = 'html_stack_comp'></p>
+                    <p><label for = 'html_datab'>Database:</label>
+                    <input class = "html_datab" type = "text"  name = 'html_datab'></p>
+                    <p><label for = 'html_api'>API:</label>
+                    <input class = "html_api" type = "text"  name = 'html_api'></p>
+                    <p><label for = 'html_server'>Server hosting:</label>
+                    <input class = "html_server" type = "text"  name = 'html_server'></p>
+                    <p><label for = 'html_other_tech'>Other technologies:</label>
+                    <input class = "html_other_tech" type = "text"  name = 'html_other_tech'></p>
+                    <p><label for = 'html_work_contr'>Work Distribution:</label>
+                    <input class = "html_work_contr" type = "text"  name = 'html_work_contr'></p>
+                    <button>Submit</button>
+                </form>
+                <form action="create_wireframe" method="POST"> 
+                    {% csrf_token %}
+                    <h3>Let's download Wireframes!</h3>
+                    <p><label for = 'html_wirefr'>Images for wireframes:</label>
+                    <input class = "html_wirefr" type = "file"  name = 'html_wirefr'></p>
+                    <button>Submit</button>
+                </form>
+    
+                <form action="create_feature" method="POST"> 
+                    {% csrf_token %}
+                    <h3>Let's create Features for your App!</h3>
+                    <p><label for = 'html_priority'>Choose Proposal:</label>
+                        <select id="select2" name = 'html_proposal'> 
+                            {% for proposal in creator_proposals %}
+                                <option value="{{proposal.project_name}}">{{proposal.project_name}}</option> 
+                            {% endfor %}
+                        </select> 
+                    </p>
+                    <p><label for = 'html_feature'>Add a new feature:</label>
+                    <input class = "html_feature" type = "text"  name = 'html_feature'></p>
+                    <p><label for = 'html_priority'>Choose priority:</label>
+                        <select id="select2" name = 'html_priority'> 
+                            <option value="P0">P0</option> 
+                            <option value="P1">P1</option> 
+                            <option value="P2">P2</option> 
+                            <option value="P3">P3</option> 
+                        </select> 
+                    </p>
+                    <button>Submit</button>
+                </form>
+
+        </div>
+       
+
+            <h2>All Proposals:</h2>
+            <h2>Project Proposal {{proposal.project_name}}</h2>
+            <p>Stack: {{proposal.stack}}</p>
+            <p>Target audience: {{proposal.audience}}</p>
+            <h4>Section 1: Summary</h4>
+            <p>Brief: {{proposal.brief}}</p>
+            <h4>Section 2: Wireframes</h4>
+            <p></p>
+            <h4>Section 3: Feature List</h4>
+            {% for features in proposal.features.all %}
+            <ul style="list-style-type:disc; list-style-position: inside;" class = ninjas_list name = "ninjas_list">
+                <li>
+                    {{features.priority}}: {{features.feat_content}}    <a href='/student/delete/feature/{{ features.id }}'>Delete Feature</a>
+                </li>
+            </ul>
+            {% endfor %}
+            <h4>Section 4: Tecnical Considerations</h4>
+            
+            <ul style="list-style-type:disc; list-style-position: inside;" class = ninjas_list name = "ninjas_list">
+                <li>Stack components: {{proposal.stack_comp}}</li>
+                <li> Database: {{proposal.database}}</li>
+                <li> 3rd party APIs: {{proposal.api}}</li>
+                <li> Server hosting: {{proposal.server}}</li>
+                <li> Any other technical complexity: {{proposal.other_tech}}</li>
+            </ul>
+            <h4>Section 5: Work Distribution</h4>
+            <p>{{proposal.work_contrib}}</p>
+            
+            <a href='/student/delete/proposal/{{ proposal.id }}'>Delete Proposal</a>
+
+            <form action="send_to_instr/prop/{{ proposal.id }}" method="POST">
+                {% csrf_token %}
+                <p>------------------------------------</p>
+                <h4>Sent to Instructor for review</h4>
+                <p><label for = 'html_inst'>Choose Instructor:</label>
+                    <select id="select2" name = 'html_inst'>
+                        {% for instr in all_instructors %}
+                            <option value="{{instr.last_name}}">{{instr.position}} {{instr.first_name}} {{instr.last_name}}</option> 
+                        {% endfor %}
+                    </select> 
+                    <button>Submit</button>
+                </p>
+            </form>
+        </div>
+    {% endif %}
+ 
+    
+</body>
+</html>
+
+

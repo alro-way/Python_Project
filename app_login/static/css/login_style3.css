@@ -1,0 +1,114 @@
+*{
+    font-family: Gotham-Rounded-Book
+}
+
+.div_forms1{
+    width: 400px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    margin-left: 150px;
+}
+
+.div_forms{
+    width: 400px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+label{
+    vertical-align: top;
+    font-size: 14pt;
+}
+.input_title{
+    margin-left: 70px;
+    width: 240px;
+}
+.table_this{
+    width: 700px;
+    border: black solid 2px;
+    font-size: 12pt;
+    text-align: center;
+}
+th{
+    background-color: rgb(146, 146, 146); 
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+button{
+    font-size: 14pt;
+    padding: 5px 20px;
+    margin-left: 120px;
+}
+
+
+
+
+
+
+img{
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
+    border: solid 10px #dfdff5;
+}
+
+.wrapper{
+    width: 1200px;
+    background-color: #fff4eb;
+}
+.header{
+    width: 1200px;
+    display: inline-block;
+    background-color: #dfdff5;
+}
+.header_elements{
+    display: inline-block;
+    font-size: 10pt;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.header_el_proposal{
+    margin-left: 750px;
+    display: inline-block;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.hello{
+    text-align: center;
+}
+div.home_page_blocks{
+    width: 450px;
+    height: 200px;
+    display: inline-block;
+    background-color: #dfdff5;
+    margin: 2px;
+}
+
+div.home_page_blocks1{
+    width: 1000px;
+    display: inline-block;
+    background-color: #dfdff5;
+    margin: 50px 2px 50px 70px;
+    padding: 20px;
+}
+p.hp_blocks_text{
+    text-align: left;
+    margin-left: 20px;
+}
+.proposal{
+    border: solid 10px #dfdff5;
+    width: 1050px;
+    margin-left: 50px;
+    margin-top: 30px;
+    text-align: left;
+    padding: 10px 0px 50px 50px;
+}
+
+/* ALL proposals page: */
+
+
+
+
+

@@ -1,0 +1,50 @@
+*{
+    font-family: Gotham-Rounded-Book
+    
+}
+
+.wrapper{
+    width: 1200px;
+    background-color: #fff4eb;
+}
+.header{
+    width: 1200px;
+    display: inline-block;
+    background-color: #dfdff5;
+}
+.header_elements{
+    display: inline-block;
+    font-size: 10pt;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.header_el_proposal{
+    margin-left: 350px;
+    display: inline-block;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.hello{
+    text-align: center;
+}
+div.home_page_blocks{
+    width: 450px;
+    height: 200px;
+    display: inline-block;
+    background-color: #dfdff5;
+    margin: 2px;
+}
+
+div.home_page_blocks1{
+    width: 450px;
+    height: 200px;
+    display: inline-block;
+    background-color: #dfdff5;
+    margin: 2px 2px 2px 148px;
+}
+p.hp_blocks_text{
+    text-align: left;
+    margin-left: 20px;
+}
+/* ALL proposals page: */
+

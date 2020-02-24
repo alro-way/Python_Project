@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_reviews_stud5.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class=wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/'>Cody says!</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+            <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+        </div>
+        <p class = header_elements><a href='/student/help'>?</a></p>
+
+        <h4 class=hello>Hello, {{this_user.position}} {{this_user.first_name}}!</h4>
+        
+        <div class=home_page_blocks1>
+            <h3>Feature Assigned to you</h3>
+            <ul>
+                {% for m in map%}
+                <h3>Project "{{m.project_name}}" ----from student -----{{m.manager.first_name}}-</h3>
+                    {% for f in feature %}
+                    <li>
+                        <p>{{f.priority}} &nbsp&nbsp&nbsp {{f.feat_content}}
+                        --------------{{f.status}}-----to me</p>
+
+                        <form action="/student/complete/{{f.id}}" method="POST">
+                            {% csrf_token %}
+                            <button>complete</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for e in stp %}
+                <h3>Project "{{e.project_name}}" ------from student ------{{e.manager.first_name}}-</h3>
+                    {% for f in feature1 %}
+                    <li>
+                    <p>{{f.priority}} &nbsp&nbsp&nbsp {{f.feat_content}}
+                    --------------{{f.status}}-----to me</p>
+                    <form action="/student/complete/{{f.id}}" method="POST">
+                        {% csrf_token %}
+                        <button>complete</button>
+                    </form>
+                    </li>
+                    {% endfor %}
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <!-- FOR INSTRUCTOR: -->
+
+</body>
+
+</html>

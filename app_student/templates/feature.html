@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_reviews_stud5.css' %}">
+</head>
+
+<body>
+    {% if this_user.position == 'student' %}
+    <div class=wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/'>Cody says!</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+            <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+        </div>
+        <p class = header_elements><a href='/student/help'>?</a></p>
+        <h4 class=hello>Manage your Project: "{{creator_proposals.project_name}}"</h4>
+
+        <div class=home_page_blocks1>
+            <form action="/student/assignfea/assign" method="POST">
+                {% csrf_token %}
+                <h4>STEP 2. Create your Team.</h4>
+
+                <p>Choose students to join your team and give them features to complete:</p>
+                Choose student:
+                <select id="select2" name='html_student'>
+                    {% for student in all_students %}
+                    <option value="{{student.first_name}}">{{student.first_name}}</option>
+                    {% endfor %}
+                </select>
+                <ul>
+                    {% for f in features %}
+                    {% if f.status == 'Not done' %}
+                    <li> {{f.priority}} {{f.feat_content}}
+                        <input type="checkbox" name="checks[]" value="{{f.id}}">
+                    </li>
+
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <button>Submit</button>
+            </form>
+            <h4>Features assigned to students:</h4>
+            <p>
+                {% for student in all_students %}
+                    <ul>
+                        {% if proposal.student == "student" %}
+                        <li>{{student.first_name}} {{student.first_name}}</li>
+                        {% endif %}
+                    </ul>
+                {% endfor%}
+            </p>
+            <ul>
+
+            </ul>
+            {% for f in features %}
+            {% if f.status != 'Not done' %}
+            <li> {{f.priority}}: {{f.feat_content}} ------------------- {{f.status}} to
+                {% if f.student != 'None' %}
+                {{f.student.first_name}}
+                {% endif %}
+                {% if f.manager != 'None' %}
+                {{f.manager.first_name}}
+                {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+            <h4>And now go and check <a href='/student/todo'>TO DO</a> list</h4>
+        </div>
+    </div>
+
+
+
+
+
+        {% endif %}
+
+        <!-- FOR INSTRUCTOR: -->
+
+</body>
+
+</html>

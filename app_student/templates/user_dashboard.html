@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_dash_stud.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/'>Cody says!</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+            <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+        </div>
+        <p class = header_elements><a href='/student/help'>?</a></p>
+
+        <h3 class="hello">Wellcome!</h3>
+        <div class = home_page_blocks1>
+            <p class = hp_blocks_text><a href='/student/all_proposals'>PROPOSALS</a></p>
+        </div>
+        <div class = home_page_blocks>
+            <p class = hp_blocks_text>REVIEWS</p>
+        </div>
+        <div class = home_page_blocks1>
+            <p class = hp_blocks_text>TASKS</p>
+        </div>
+        <div class = home_page_blocks>
+            <p class = hp_blocks_text>PROJECTS</p>
+        </div>
+    </div>
+   
+    {% endif %}
+
+</body>
+</html>
+
+

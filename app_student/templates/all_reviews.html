@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_reviews_stud5.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+
+            <h4 class = hello>Reviews from Instructors:</h4>
+
+            <div class = home_page_blocks1>
+                {% for proposal in creator_proposals %}
+                    <p class = hp_blocks_text>Proposal  <a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a>  --- {{proposal.status}}</p>
+                
+                    {% for reviews in all_reviews %}
+                        <ul>
+                            {% if reviews.proposal == proposal %}
+                                <li>{{reviews.created_at}} <a href= 'details/review/{{reviews.id}}'>Review</a> from instructor {{reviews.instructor.first_name}}  --- {{reviews.status_rev}}</li>
+                            {% endif %}
+                        </ul>
+                    {% endfor %}
+                    <p>--------------------------------------------------------</p>
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+
+
+
+    {% endif %}
+
+<!-- FOR INSTRUCTOR: -->
+
+</body>
+</html>
+
+

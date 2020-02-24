@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_details_proposal5.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+            <h3 class = "hello"> Project Proposal Requirements</h3>
+
+            <div class = "proposal">
+                <h4>Section 1: Summary</h4>
+                    <p>A brief 200-500 word description of what your project is all about. Include the following
+                        information:</p>
+                    ● What will your application be called? If you don’t have a good name, come up with a
+                    working name.<br>
+                    ● Who is your application for? Who is the target audience and how will it help them?<br>
+                    ● What are the 3 main features of your application? There may be more than 3 features,
+                    but describe the 3 most important ones.<br>
+                <h4>Section 2: Wireframes</h4>
+                    <p>Include wireframes of each page your application is going to have, as well as a brief description
+                    of how each page leads to another. This should look a lot like what you have seen from us in
+                    your assignments on the platform--you don’t need include every single part of your look and feel
+                    for each page, just a general idea of the components the page will have.</p>
+                   <p>You can either draw your wireframes out by hand or create them digitally (there are many
+                    resources you can use for this such as https://pencil.evolus.vn/ )
+                    Sample:</p>
+                <h4>Section 3: Feature List</h4>
+                    <p> Create a list of features that your application will have. Structure these as things that a user will
+                    experience. For example, if I was doing Ninja Gold as a project, this would be my list of features:</p>
+                    ● User will be able to see how much gold they currently have<br>
+                    ● User will be able to select one of four different options to find gold<br>
+                    ● Each option will have a different range from which it will randomly select an amount of
+                    gold to add or remove<br>
+                    ● User will be able to see a log of their previous selections (i.e. “Entered a casino and lost
+                    8 gold”)<br>
+                    ● User will be able to click the “Reset” button to restart the game<br>
+                    ● User will win the game if they reach 500 gold in 15 or less clicks<br>
+                    ● Activity log will be color coded - green for winning gold, red for losing gold<br>
+                <p>Once you have created a list of features, go through and assign each feature a priority from P0
+                    to P3. Use this guide to prioritize:</p>
+                    P0: Must-have. A user cannot use your application at all without these features. Also referred to
+                    as MVP (minimum viable product)<br>
+                    P1: The product technically works without these, but may be difficult to use or require some
+                    workarounds. These should ideally be finished for the application to be any good.<br>
+                    P2: Nice-to-haves. These will improve the overall experience of the application, but are not
+                    essential.<br>
+                    P3: Other features that you would add if you had unlimited time. Realize you will probably not
+                    get to these.<br>
+                    <p>My prioritization for the above list of Ninja Gold features would probably look like this:</p>
+                    P0: User will be able to select one of four different options to find gold<br>
+                    P0: Each option will have a different range from which it will randomly select an amount of gold
+                    to add or remove<br>
+                    P0: User will be able to see how much gold they currently have<br>
+                    P1: User will be able to click the “Reset” button to restart the game<br>
+                    P1: User will win the game if they reach 500 gold in 15 or less clicks<br>
+                    P2: User will be able to see a log of their previous selections (i.e. “Entered a casino and lost 8
+                    gold”)<br>
+                    P3: Activity log will be color coded - green for winning gold, red for losing gold<br>
+
+                <h4>Section 4: Technical Considerations</h4>
+                    <p>Describe the technologies you are going to use in your project. This includes what you are going
+                        to use for:</p>
+                        ● Stack components (i.e. Python, C#, MEAN, etc.)<br>
+                        ● Database (MySQL? MongoDB?)<br>
+                        ● 3rd party APIs<br>
+                        ● Server hosting (EC2, etc)<br>
+                        ● Any other technical complexity specific to your project<br>
+                <h4>Section 5: Work Distribution</h4>
+                    <p>If you are working in a group, please include here the breakdown of how you are splitting up the
+                        work. You can just write each feature with who is going to be working on it. Try to split up the
+                        work in order of priority--first distribute P0s, then P1s, etc.</p>
+            </div>
+            <div class = "proposal_down">
+                <h2 id = "new_prop"><a href='/student/'>Cody says:</a></h2>
+                <p>"Hey Ninjas!</p>
+                <p> As we discussed, there's a project proposal form that we would like you
+                    guys to follow before bringing your ideas to us. Also, in case you want some 
+                    more info on the  project themes we discussed, here's something to get you 
+                    a better idea!"
+                </p>
+            </div>
+            <div class = "proposal">
+                <h3> Project Proposal Requirements</h3>
+                <p>This is the timeline of deliverables for your project and the criteria we will use to evaluate it:</p>
+                <h4>Kickoff:</h4>
+                    <p>Create 1-2 page project proposal as described by this document. Present the proposal
+                        to an instructor. Instructor will provide feedback on whether project is of appropriate scale for
+                        project week. All proposals must be signed off by an instructor to be considered for
+                        project belts.</p>
+                <h4>Project Week :</h4>
+                <p>You will use the time allotted for project week to track and complete work in
+                    whatever way works best for your project. This is your time to plan and use efficiently.</p>
+                <h4>Presentations:</h4>
+                <p>At the end of project week, each group or individual will have a set amount of
+                    time to present their project to the Dojo. This is a time to show off what you built, talk about
+                    challenges you faced, and any future plans for the project. If you worked in a group, please
+                    have every member of the group participate in this presentation.</p>
+                <h3> Project Belt Requirements:</h3>
+                    <p>Projects will receive a Green Belt sticker if all of the following requirements are met:</p>
+    
+                    1. Your project plan was signed off by an instructor<br>
+                    2. All P0s are completed<br>
+                    3. At least 2 P1s are completed<br>
+                    4. The technical theme of the month is used, or an equivalent level of technical complexity<br>
+                    (subject to instructor approval)<br>
+                    5. Version Control (Git) is used at the appropriate level<br>
+                    a. 1st stack - you must have your code published on github with at least one commit<br>
+                    b. 2nd stack - you must create at least 3 branches<br>
+                    c. 3rd stack - you must have at least 2 merges in your commit history<br>
+                    6. You successfully presented your project at the end of the week<br>
+            </div>
+
+            <div class = "proposal_down">
+            </div>
+         </div>
+    {% endif %}
+ 
+    
+</body>
+</html>
+
+

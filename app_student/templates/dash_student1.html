@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_details_proposal5.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+
+
+            <h2 id = "new_prop">Cody says:</h2>
+            <div class = "proposal_down">
+                <p>"Hey Ninjas!</p>
+                <p> As we discussed, there's a project proposal form that we would like you
+                    guys to follow before bringing your ideas to us. Also, in case you want some 
+                    more info on the  project themes we discussed, here's something to get you 
+                    a better idea!"
+                </p>
+            </div>
+
+            <div class = "proposal">
+                <h3> PW Prompts:</h3>
+                <h4>1. Environmentalism</h4>
+                    <p>Do you have an idea that would help society live in a more sustainable way? Create a project
+                    that makes “going green” a reality. This can include, but is not limited to:</p>
+                    ● Reducing or monitoring carbon emissions<br>
+                    ● Helping protect endangered species<br>
+                    ● Reducing pollution or helping clean local neighborhoods or cities<br>
+                    ● Ensuring everyone has access to clean drinking water and healthy food to eat<br>
+                    ● Preventing deforestation or driving reforestation<br>
+                    ● Improving waste disposal<br>
+                    ● Improving the recycling process or recycling adoption<br>
+                <h4>2. In-Need Individuals</h4>
+                    <p>Are there communities or groups of individuals you want to support? Create a project that helps
+                    those in our society who need it most. This can include, but is not limited to:</p>
+                    ● Supporting homeless individuals to find housing, food/water, employment, etc.<br>
+                    ● Ending hunger in your area, or any area around the world<br>
+                    ● Improving access to financial services or employment for impoverished individuals<br>
+                    ● Helping veterans with PTSD or other service-related afflictions<br>
+                <h4>3. Choose Your Own Cause</h4>
+                    <p> Is there a different charity or non-profit that you support? Identify an organization working with
+                    an issue that you’re passionate about, then create a project that will help them reach their
+                    mission.</p>
+                <h4>4. Choose Your Own Adventure</h4>
+                    <p>Are you stumped or not interested in the above causes? Build any other project that showcases
+                    the technical skills you’ve learned in the program.</p>
+                
+                
+            </div>
+            <div class = "proposal_down">
+                <p>You can read all instructions how to fill Proposal <a href='/student/help'>HERE</a></p>
+            </div>
+         </div>
+    {% endif %}
+ 
+    
+</body>
+</html>
+
+

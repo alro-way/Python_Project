@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_instr_pro.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'instructor' %}
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_el_proposal><a href='/instructor/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>PROJECTS</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/log_out'>Log out</a></p>
+        </div>
+        <div class = "proposal">
+            <h2>For Instructor:</h2>
+            <h4>Here is your review for {{proposal.manager.first_name}}:</h4>
+            <p>{{this_review}}</p>
+            <h4>Do you approve this Proposal?</h4>
+            <form action="/instructor/approved/{{proposal.id}}" method="POST">
+                {% csrf_token %}
+                <button>Approved</button>
+            </form>
+            <form action="/instructor/not_approved/{{proposal.id}}" method="POST">
+                {% csrf_token %}
+                <button>Not approved</button>
+            </form>
+
+        </div>
+
+        <h3 class = hello>Proposal from student {{proposal.manager.first_name}}</h3>
+    
+        <div class = "proposal">
+            <h4> Name of Project: "{{proposal.project_name}}"</h4>
+            <p class="propos_text">Stack: {{proposal.stack}}</p>
+            <p class="propos_text">Target audience: {{proposal.audience}}</p>
+            <h4>Section 1: Summary</h4>
+            <p class="propos_text">Brief: {{proposal.brief}}</p>
+
+            <h4>Section 2: Wireframes</h4>
+            {% for wireframe in y %}
+            <a class = "w_img" href="{{wireframe.wireframe_img.url}}"><img src="{{wireframe.wireframe_img.url}}" alt=""></a>
+            {% endfor %}
+
+            <h4>Section 3: Feature List</h4>
+            {% for features in proposal.features.all %}
+            <ul style="list-style-type:disc; list-style-position: inside;" class="propos_text" name = "ninjas_list">
+                <li>
+                    {{features.priority}}: {{features.feat_content}}    <a href='/student/delete/feature/{{ features.id }}'>Delete Feature</a>
+                </li>
+            </ul>
+            {% endfor %}
+            <h4>Section 4: Tecnical Considerations</h4>
+            
+            <ul style="list-style-type:disc; list-style-position: inside;" class="propos_text" name = "ninjas_list">
+                <li>Stack components: {{proposal.stack_comp}}</li>
+                <li> Database: {{proposal.database}}</li>
+                <li> 3rd party APIs: {{proposal.api}}</li>
+                <li> Server hosting: {{proposal.server}}</li>
+                <li> Any other technical complexity: {{proposal.other_tech}}</li>
+            </ul>
+            <h4>Section 5: Work Distribution</h4>
+            <p class="propos_text">{{proposal.work_contrib}}</p>
+        </div>
+</div>
+    {% endif %}
+    
+
+</body>
+</html>
+
+

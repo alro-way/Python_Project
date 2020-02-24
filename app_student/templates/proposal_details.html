@@ -1,0 +1,97 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="view" content="Our first page">
+        <meta http-equiv="refresh" content="300">
+        <title>Register Form</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style_details_proposal5.css' %}">
+    </head>
+    <body>
+        {% if this_user.position == 'student' %}
+            <div class = wrapper>
+                <div class = header>
+                    <p class = header_elements>Menu</p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                    <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                    <p class = header_elements>|</p>
+                    <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+                </div>
+                <p class = header_elements><a href='/student/help'>?</a></p>
+
+    
+                <h2 id = "new_prop">PROPOSAL for Project "{{proposal.project_name}}"</h2>
+                <div class = "proposal_down">
+                    <form action="send_to_instr/{{proposal.id}}" method="POST">
+                        {% csrf_token %}
+                        <h4>You may send this proposal to Instructor now or later:</h4>
+                        <p><label for = 'html_inst'>Choose Instructor:</label>
+                            <select id="select2" name = 'html_inst'>
+                                {% for instr in all_instructors %}
+                                    <option value="{{instr.last_name}}">{{instr.position}} {{instr.first_name}} {{instr.last_name}}</option> 
+                                {% endfor %}
+                            </select> 
+                            <button>Submit</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div class = "proposal">
+                    <h4> Name of Project: "{{proposal.project_name}}"</h4>
+                    <p class="propos_text">Stack: {{proposal.stack}}</p>
+                    <p class="propos_text">Target audience: {{proposal.audience}}</p>
+                    <h4>Section 1: Summary</h4>
+                    <p class="propos_text">Brief: {{proposal.brief}}</p>
+
+                    <h4>Section 2: Wireframes</h4>
+                    {% for wireframe in y %}
+                    <a class = "w_img" href="{{wireframe.wireframe_img.url}}"><img src="{{wireframe.wireframe_img.url}}" alt=""></a>
+                    {% endfor %}
+
+                    <h4>Section 3: Feature List</h4>
+                    {% for features in proposal.features.all %}
+                    <ul style="list-style-type:disc; list-style-position: inside;" class="propos_text" name = "ninjas_list">
+                        
+                        <li>
+                            {{features.priority}}: {{features.feat_content}}    <a href='/student/delete/feature/{{ features.id }}'>Delete Feature</a>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                    <h4>Section 4: Tecnical Considerations</h4>
+                    
+                    <ul style="list-style-type:disc; list-style-position: inside;" class="propos_text" name = "ninjas_list">
+                        <li>Stack components: {{proposal.stack_comp}}</li>
+                        <li> Database: {{proposal.database}}</li>
+                        <li> 3rd party APIs: {{proposal.api}}</li>
+                        <li> Server hosting: {{proposal.server}}</li>
+                        <li> Any other technical complexity: {{proposal.other_tech}}</li>
+                    </ul>
+                    <h4>Section 5: Work Distribution</h4>
+                    <p class="propos_text">{{proposal.work_contrib}}</p>
+                    
+                    <a href='/student/delete/proposal/{{ proposal.id }}'>Delete</a>
+                    <a href='/student/edit/proposal/{{ proposal.id }}'>Edit</a>
+                </div>
+                <div class = "proposal_down">
+                </div>
+             </div>
+        {% endif %}
+     
+        
+    </body>
+    </html>
+    
+    
+    

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_details_proposal5.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+            <h3 class = "hello"> Project Proposal Requirements</h3>
+            <div class = "proposal_down">
+                <p>This is the timeline of deliverables for your project and the criteria we will use to evaluate it.</p>
+            </div>
+            <div class = "proposal">
+                <h4>Kickoff:</h4>
+                    <p>Create 1-2 page project proposal as described by this document. Present the proposal
+                        to an instructor. Instructor will provide feedback on whether project is of appropriate scale for
+                        project week. All proposals must be signed off by an instructor to be considered for
+                        project belts.</p>
+                <h4>Project Week :</h4>
+                <p>You will use the time allotted for project week to track and complete work in
+                    whatever way works best for your project. This is your time to plan and use efficiently.</p>
+                <h4>Presentations:</h4>
+                <p>At the end of project week, each group or individual will have a set amount of
+                    time to present their project to the Dojo. This is a time to show off what you built, talk about
+                    challenges you faced, and any future plans for the project. If you worked in a group, please
+                    have every member of the group participate in this presentation.</p>
+                <h3> Project Belt Requirements:</h3>
+                    <p>Projects will receive a Green Belt sticker if all of the following requirements are met:</p>
+    
+                    1. Your project plan was signed off by an instructor<br>
+                    2. All P0s are completed<br>
+                    3. At least 2 P1s are completed<br>
+                    4. The technical theme of the month is used, or an equivalent level of technical complexity<br>
+                    (subject to instructor approval)<br>
+                    5. Version Control (Git) is used at the appropriate level<br>
+                    a. 1st stack - you must have your code published on github with at least one commit<br>
+                    b. 2nd stack - you must create at least 3 branches<br>
+                    c. 3rd stack - you must have at least 2 merges in your commit history<br>
+                    6. You successfully presented your project at the end of the week<br>
+            </div>
+
+            <div class = "proposal_down">
+            </div>
+         </div>
+    {% endif %}
+ 
+    
+</body>
+</html>
+
+

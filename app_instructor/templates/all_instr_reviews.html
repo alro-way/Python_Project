@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_ins_rev.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'instructor' %}
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_el_proposal><a href='/instructor/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>PROJECTS</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/log_out'>Log out</a></p>
+        </div>
+            <h4 class = hello>My reviews:</h4>
+
+            <div class = home_page_blocks1>
+
+                    {% for reviews in all_reviews %}
+                            <ul>
+                                <li>{{reviews.created_at}} ----- <a href= 'details/review/{{reviews.id}}'>Review</a> to {{reviews.proposal.manager.first_name}}, Proposal "{{reviews.proposal.project_name}}"</li>
+                            </ul>
+                      
+                    {% endfor %}
+            </div>
+
+
+
+
+
+    {% endif %}
+
+<!-- FOR INSTRUCTOR: -->
+
+</body>
+</html>
+
+

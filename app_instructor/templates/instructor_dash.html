@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_inst.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'instructor' %}
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_el_proposal><a href='/instructor/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>PROJECTS</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/log_out'>Log out</a></p>
+        </div>
+        <h3 class = hello>Hello, {{this_user.position}} {{this_user.first_name}}!</h3>
+        <div class = home_page_blocks1>
+            <p class = hp_blocks_text><a href='/instructor/all_proposals'>PROPOSALS</a></p>
+            <p class = hp_blocks_text>New:</p>
+        </div>
+        <div class = home_page_blocks>
+            <p class = hp_blocks_text>PROJECTS</p>
+        </div>
+    </div>
+    {% endif %}
+    
+
+</body>
+</html>
+
+

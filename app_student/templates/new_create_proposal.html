@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_new_create5.css' %}">
+    	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+
+
+            <h3 class = hello>Create a New Proposal!</h3>
+
+            <div class = home_page_block2>
+                <h3>Fill all sections.</h3>
+                <form action="new_proposal_created" method="POST">
+                    {% csrf_token %}
+                    <h3>Section 1. Summary</h3>
+                    <p><label for = 'html_stack'>Choose stack:</label>
+                        <select id="select2" name = 'html_stack'> 
+                            <option value="Python">Python</option> 
+                            <option value="C#">C#</option> 
+                            <option value="Mean">Mean</option> 
+                        </select> 
+                    </p>
+                    <p><label for = 'html_pr_name'>Name of App:</label>
+                    <input class = "html_pr_name'" type = "text"  name = 'html_pr_name'></p>
+                    <p><label for = 'html_aud'>Target audience:</label>
+                    <input class = "html_aud" type = "text"  name = 'html_aud'></p>
+                    <p><label for = 'html_brief'>Brief:</label>
+                    <textarea rows = "10" cols = "60" name = 'html_brief'></textarea></p>
+                    <p>--------------------------------------------------------</p>
+
+                    <h3>Section 3. Feature List</h3>
+                    <p>Let's create Features for your App!</p>
+                    <p><label for = 'html_feature'>Add a new feature:</label>
+                
+                    <p><label for = 'html_priority'>Choose priority:</label>
+                        <select id="select2" name = 'html_priority'> 
+                            <option value="P0">P0</option> 
+                            <option value="P1">P1</option> 
+                            <option value="P2">P2</option> 
+                            <option value="P3">P3</option> 
+                        </select> 
+                    </p>
+                    <div class="input_fields_wrap">
+                        <button class="add_field_button" id="add_button">Add More Feature</button>
+                        <div id="addFeature"><input type="text" name="count1"></div>
+                    </div>
+                    <input type="hidden" name="count" id="count">
+                    
+                    <p>--------------------------------------------------------</p>
+
+                    <h3>Section 4. Technical Considerations</h3>
+                    <p><label for = 'html_stack_comp'>Stack components:</label>
+                    <input class = "html_stack_comp" type = "text"  name = 'html_stack_comp'></p>
+                    <p><label for = 'html_datab'>Database:</label>
+                    <input class = "html_datab" type = "text"  name = 'html_datab'></p>
+                    <p><label for = 'html_api'>API:</label>
+                    <input class = "html_api" type = "text"  name = 'html_api'></p>
+                    <p><label for = 'html_server'>Server hosting:</label>
+                    <input class = "html_server" type = "text"  name = 'html_server'></p>
+                    <p><label for = 'html_other_tech'>Other technologies:</label>
+                    <input class = "html_other_tech" type = "text"  name = 'html_other_tech'></p>
+                    <p>--------------------------------------------------------</p>
+
+                    <h3>Section 5. Work Distribution</h3>
+                    <p> Work Distribution</p>
+                    <textarea rows = "10" cols = "60" name = 'html_work_contr'></textarea></p>
+                    <p><button>Submit</button></p>
+                </form>
+            </div>
+
+
+            <div class = home_page_block3>
+                <h3>Requirements:</h3>
+                <h3>Section 1. Summary</h3>
+                <p class = "instructions">A brief 200-500 word description of what your project is all about. Include the following
+                    information:
+                    <p class = "instructions">● What will your application be called? If you don’t have a good name, come up with a
+                    working name.</p>
+                    <p class = "instructions">● Who is your application for? Who is the target audience and how will it help them?</p>
+                    <p class = "instructions">● What are the 3 main features of your application? There may be more than 3 features,
+                    but describe the 3 most important ones.</p>
+                </p>
+                <h3>Section 3. Feature List</h3>
+                <p class = "instructions"> Create a list of features that your application will have. Structure these as things that a user will
+                    experience. For example, if I was doing Ninja Gold as a project, this would be my list of features:
+                    ● User will be able to see how much gold they currently have<br>
+                    ● User will be able to select one of four different options to find gold<br>
+                    ● Each option will have a different range from which it will randomly select an amount of
+                    gold to add or remove<br>
+                    ● User will be able to see a log of their previous selections (i.e. “Entered a casino and lost
+                    8 gold”)<br>
+                    ● User will be able to click the “Reset” button to restart the game<br>
+                    ● User will win the game if they reach 500 gold in 15 or less clicks<br>
+                    ● Activity log will be color coded - green for winning gold, red for losing gold<br>
+                </p>
+                <h3>Section 4. Technical Consideration</h3>
+                <p class = "instructions">Describe the technologies you are going to use in your project. This includes what you are going
+                    to use for:
+                    ● Stack components (i.e. Python, C#, MEAN, etc.)<br>
+                    ● Database (MySQL? MongoDB?)<br>
+                    ● 3rd party APIs<br>
+                    ● Server hosting (EC2, etc)<br>
+                    ● Any other technical complexity specific to your project<br>
+                </p>
+
+                <h3>Section 5. Work Distribution</h3>
+                <p class = "instructions">If you are working in a group, please include here the breakdown of how you are splitting up the
+                    work. You can just write each feature with who is going to be working on it. Try to split up the
+                    work in order of priority--first distribute P0s, then P1s, etc.
+                </p>
+            </div>
+            <div class = "proposal_down">
+            </div>
+         </div>
+    {% endif %}
+
+    <script>
+        $(document).ready(function () {
+            var max_fields = 10;
+            var x = 1; //initlal text box count
+            $('#add_button').click(function (e) { //on add input button click
+                e.preventDefault();
+                if (x < max_fields) { //max input box allowed
+                    x++; //text box increment
+                    $('#addFeature').append('<div id = "combion' + x + '"><input type="text" name="count' + x + '"/></div>'); //add input box
+                    $('#count').val(x);
+                }
+
+            })
+
+        });
+
+    </script>
+</body>
+</html>
+
+

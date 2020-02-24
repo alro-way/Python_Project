@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_ins_rev.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'instructor' %}
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_el_proposal><a href='/instructor/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>PROJECTS</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/log_out'>Log out</a></p>
+        </div>
+        <h3 class = hello>All Proposals from students</h3>
+        <div class = home_page_blocks1>
+            <h3 class = hp_blocks_text>For review:</a></h3>
+            <ul>
+                {% for p in proposals %}
+                    {% if p.status == "new" %}
+                        <li>Proposal <a href="/instructor/proposal/{{p.id}}">"{{p.project_name}}" </a> --------- from {{p.manager.first_name}} --------- {{p.status}}  </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <h3 class = hp_blocks_text>Review is done:</a></h3>
+
+            <ul>
+                {% for p in proposals %}
+                    {% if p.status != "new" %}
+                        <li> Proposal <a href="/instructor/proposal/{{p.id}}">"{{p.project_name}}" </a> --------- from {{p.manager.first_name}} --------- {{p.status}}   </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+    {% endif %}
+    
+
+</body>
+</html>
+
+

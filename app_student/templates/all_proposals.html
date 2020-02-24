@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_all_pro5.css' %}">
+</head>
+<body>
+    {% if this_user.position == 'student' %}
+        <div class = wrapper>
+            <div class = header>
+                <p class = header_elements>Menu</p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/'>Cody says!</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+                <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+                <p class = header_elements>|</p>
+                <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+            </div>
+            <p class = header_elements><a href='/student/help'>?</a></p>
+
+            <h4 class = hello><a href='new_create_proposal_page'>New Proposal</a></h4>
+            <h4 class = hello>Created Proposals:</h4>
+
+            <div class = home_page_blocks1>
+                <h4 class = hp_blocks_text>PYTHON</h4>
+                {% for proposal in creator_proposals %}
+                {% if proposal.stack == "Python" %}
+                    <p class = hp_blocks_text><a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a>  - {{proposal.status}}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class = home_page_blocks>
+                <h4 class = hp_blocks_text>C#</h4>
+                {% for proposal in creator_proposals %}
+                {% if proposal.stack == "C#" %}
+                    <p class = hp_blocks_text><a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a>  - {{proposal.status}}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class = home_page_blocks>
+                <h4 class = hp_blocks_text>MEAN</h4>
+                {% for proposal in creator_proposals %}
+                {% if proposal.stack == "Mean" %}
+                    <p class = hp_blocks_text><a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a>  - {{proposal.status}}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+
+            <h4 class = hello>Joined Proposals:</h4>
+            <div class = home_page_blocks1>
+                <h4 class = hp_blocks_text>PYTHON</h4>
+                {% for proposal in all_joined_p %}
+                {% if proposal.stack == "Python" %}
+                    <p class = hp_blocks_text><a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a> - {{proposal.status}}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class = home_page_blocks>
+                <h4 class = hp_blocks_text>C#</h4>
+                {% for proposal in all_joined_p %}
+                {% if proposal.stack == "C#" %}
+
+                    <p class = hp_blocks_text><a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a>- {{proposal.status}}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class = home_page_blocks>
+                <h4 class = hp_blocks_text>MEAN</h4>
+                {% for proposal in all_joined_p %}
+                {% if proposal.stack == "Mean" %}
+
+                    <p class = hp_blocks_text><a href= 'details/proposal/{{proposal.id}}'>"{{proposal.project_name}}"</a>  - {{proposal.status}}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+  
+        </div>
+
+    {% endif %}
+
+<!-- FOR INSTRUCTOR: -->
+
+</body>
+</html>
+
+

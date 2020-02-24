@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_instr_pro.css' %}">
+</head>
+<body>
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_el_proposal><a href='/instructor/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>PROJECTS</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/instructor/log_out'>Log out</a></p>
+        </div>
+        <h4 class = hello>Review to {{proposal.manager.first_name}} for Proposal "{{proposal.project_name}}":</h4>
+
+    <div class = "proposal">
+            <h4>Here is a review from {{this_instructor.first_name}}:</h4>
+            <p>{{this_review.review_content}}</p>
+        </div>
+
+        <h3 class = hello>Proposal "{{proposal.project_name}}"</h3>
+    
+        <div class = "proposal">
+            <h4> Name of Project: "{{proposal.project_name}}"</h4>
+            <p class="propos_text">Stack: {{proposal.stack}}</p>
+            <p class="propos_text">Target audience: {{proposal.audience}}</p>
+            <h4>Section 1: Summary</h4>
+            <p class="propos_text">Brief: {{proposal.brief}}</p>
+            <h4>Section 2: Wireframes</h4>
+            <p></p>
+            <h4>Section 3: Feature List</h4>
+            {% for features in proposal.features.all %}
+            <ul style="list-style-type:disc; list-style-position: inside;" class="propos_text" name = "ninjas_list">
+                <li>
+                    {{features.priority}}: {{features.feat_content}}    <a href='/student/delete/feature/{{ features.id }}'>Delete Feature</a>
+                </li>
+            </ul>
+            {% endfor %}
+            <h4>Section 4: Tecnical Considerations</h4>
+            
+            <ul style="list-style-type:disc; list-style-position: inside;" class="propos_text" name = "ninjas_list">
+                <li>Stack components: {{proposal.stack_comp}}</li>
+                <li> Database: {{proposal.database}}</li>
+                <li> 3rd party APIs: {{proposal.api}}</li>
+                <li> Server hosting: {{proposal.server}}</li>
+                <li> Any other technical complexity: {{proposal.other_tech}}</li>
+            </ul>
+            <h4>Section 5: Work Distribution</h4>
+            <p class="propos_text">{{proposal.work_contrib}}</p>
+        </div>
+</div>
+    
+
+</body>
+</html>
+
+

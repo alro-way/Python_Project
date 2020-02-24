@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login_style3.css' %}">
+</head>
+<body>
+    <div class = wrapper>
+        <div class = header>
+            <h4 class = "hello">Are your ready for </h4>
+            <h4 class = "hello">PROJECT WEEK?!</h4>
+
+        </div>
+        <div class = home_page_blocks1>
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div class = div_forms1>
+                <h4>Registration</h4>
+                <form action="/create_user" method="POST">
+                    {% csrf_token %}
+                    <p><label for = 'html_position'>Position:</label>
+                        <select id="select1" name = 'html_position'> 
+                            <option value="student">Student</option> 
+                            <option value="instructor">Instructor</option> 
+                        </select> 
+                    </p>
+                    <p><label for = 'html_reg_fname'>First name:</label>
+                    <input  type = "text"  name = 'html_reg_fname'></p>
+                    <p><label for = 'html_reg_lname'>Last Name</label>
+                    <input  type = "text"  name = 'html_reg_lname'></p>
+                    <p><label for = 'html_reg_email'>Email:</label>
+                    <input type="email" name="html_reg_email"></p>
+                    <p><label for = 'html_reg_password'>Password:</label>
+                    <input id="userPassword" type="password" name="html_reg_password"></p>
+                    <p><label for = 'html_reg_passw_conf'>Confirm PW:</label>
+                    <input id="userPasswordConf" type="password" name="html_reg_passw_conf"></p>
+                    <button>Reqister</button>
+                </form>
+            </div>
+            <div class = div_forms>
+                <h4>Login</h4>
+                
+                <form action="/login_user" method="POST">
+                    {% csrf_token %}
+                    <p><label for = 'html_log_email'>Email:</label>
+                    <input  type="email"  name = 'html_log_email'></p>
+                    <p><label for = 'html_log_pw'>Password:</label>
+                    <input  type="password"  name = 'html_log_pw'></p>
+                    <button>Log in</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+

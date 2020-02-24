@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="Our first page">
+    <meta http-equiv="refresh" content="300">
+    <title>Register Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_create_prop5.css' %}">
+</head>
+<body>
+    <div class = wrapper>
+        <div class = header>
+            <p class = header_elements>Menu</p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/'>Cody says!</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements>Hello, {{this_user.position}} {{this_user.first_name}}!</p>
+            <p class = header_el_proposal> <a href='/student/all_proposals'>PROPOSALS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/all_reviews'>REVIEWS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/manage'>MANAGE</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/todo'>TO DO</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/projects'>PROJECTS</a></p>
+            <p class = header_elements>|</p>
+            <p class = header_elements><a href='/student/log_out'>Log out</a></p>
+        </div>
+        <p class = header_elements><a href='/student/help'>?</a></p>
+
+        <h3 class = hello>Add Wireframes to Proposal "{{this_proposal.project_name}}"</h3>
+        <div class = home_page_blocks1>
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
+                
+
+            <h3>Fill Section 5.</h3>
+            <p>ID of this Proposal: ({{this_proposal.id}})</p>
+
+            <form method="POST" enctype= "multipart/form-data" action= "create_wireframe/prop/{{this_proposal.id}}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="">Submit</button>
+            </form> 
+            <table >
+                <thead>
+                    <tr>
+                        <th>Your images:</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                {% for wireframe in y %}
+                <tbody>   
+                    <td> <a href="{{wireframe.wireframe_img.url}}"><img src="{{wireframe.wireframe_img.url}}" alt=""></a></td>
+                    <td><a href="/student/remove/{{wireframe.id}}">Remove</a></td>
+                
+                </tbody>
+                {% endfor %}
+            </table> 
+        
+        </div>
+
+        
+        <div class = home_page_blocks>
+            <h3>Instructions:</h3>
+            <p class = "instructions">A brief 200-500 word description of what your project is all about. Include the following
+                information:
+                <p class = "instructions">● What will your application be called? If you don’t have a good name, come up with a
+                working name.</p>
+                <p class = "instructions">● Who is your application for? Who is the target audience and how will it help them?</p>
+                <p class = "instructions">● What are the 3 main features of your application? There may be more than 3 features,
+                but describe the 3 most important ones.</p>
+            </p>
+            <h4>If you finished with wireframes then go <a href= 'details/proposal/{{this_proposal.id}}'>HERE</a>,
+                check your Proposal and send it to Instructor for review.
+                
+            </h4>
+        </div>
+    </div>
+</body>
+</html>
+
+
